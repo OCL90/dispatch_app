@@ -1,0 +1,14 @@
+
+{% extends 'frac/main.html' %}
+
+{% block content %}
+
+<div class="uk-text-center uk-align-center uk-margin uk-padding uk-width-xxlarge">
+  <h1>{{ facility.name }} Loading Facility</h1>
+  <p class="uk-text-italic uk-margin-remove"><span class="uk-text-bold">Location:</span> {{ facility.location }}</p>
+  <p class="uk-text-italic uk-margin-remove"><span class="uk-text-bold">Directions:</span> <br> {{ facility.directions }}</p>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'frac/main.html' %}
+
+{% block content %}
+
+<div class="uk-text-center uk-padding">
+  <h1 class="uk-text-uppercase">Wells</h1>
+</div>
+
+
+<div class="uk-child-width-expand@s uk-text-center" uk-grid>
+  <div>
+    <a href="{% url 'create_well' %}"><button class="uk-button uk-button-primary uk-border-rounded" uk-icon="plus-circle">add well </button></a>
+  </div>
+  <div>
+    <a href="{% url 'create_sand' %}"><button class="uk-button uk-button-primary uk-border-rounded" uk-icon="plus-circle">add sand type </button></a>
+  </div>
+</div>
+
+
+
+<div class="uk-margin-medium-top">
+  <ul class="uk-flex-center" uk-tab>
+      <li><a href="#">Current Wells ({{ active_wells }})</a></li>
+      <li><a href="#">Past Wells ({{ inactive_wells }})</a></li>
+  </ul>
+  <ul class="uk-switcher uk-padding">
+    <li>
+      <div class="uk-grid-large uk-grid-match uk-child-width-expand@s uk-text-center" uk-grid>
+        {% for well in wells %}
+        {% if well.active %}
+        <div class="uk-width-1-3@s">
+          <a href="{% url 'well' well.id %}">
+          <div class="uk-card uk-card-default uk-card-body uk-card-hover uk-card-large uk-border-pill">
+            <p class="uk-text-bold uk-text-lead uk-text-uppercase uk-margin-remove">{{ well.name }}</p>
+            <p class="uk-margin-remove uk-text-italic">{{ well.operator.name }}</p>
+            <p class="uk-margin-remove uk-text-italic">{{ well.serviceco.name }}</p>
+            <p class="uk-margin-remove uk-text-italic">{{ well.location }}</p>
+          </div>
+          </a>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </li>
+    <li>
+      <div class="uk-grid-large uk-grid-match uk-child-width-expand@l uk-text-center" uk-grid>
+        {% for well in wells %}
+        {% if well.active == False %}
+        <div class=uk-width-1-3@s>
+          <a href="{% url 'well' well.id %}">
+          <div class="uk-card uk-card-default uk-card-body uk-card-hover uk-card-large uk-border-pill">
+            <p class="uk-text-bold uk-text-lead uk-text-uppercase uk-margin-remove">{{ well.name }}</p>
+            <p class="uk-margin-remove uk-text-italic">{{ well.operator.name }}</p>
+            <p class="uk-margin-remove uk-text-italic">{{ well.serviceco.name }}</p>
+            <p class="uk-margin-remove uk-text-italic">{{ well.location }}</p>
+          </div>
+          </a>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </li>
+  </ul>
+</div>
+
+{% endblock %}

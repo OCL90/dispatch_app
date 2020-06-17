@@ -1,0 +1,60 @@
+{% extends 'frac/main.html' %}
+
+{% block content %}
+<div class="uk-text-center uk-padding">
+  <h1 class="uk-text-uppercase">loading facilities</h1>
+</div>
+<div>
+  <button class="uk-button uk-button-primary uk-border-rounded" href="#facility-modal-overflow" uk-toggle uk-icon="plus-circle">add loading facility </button>
+</div>
+<div id="facility-modal-overflow" uk-modal>
+  <div class="uk-modal-dialog">
+    <button class="uk-modal-close-default" type="button" uk-close></button>
+    <div class="uk-modal-header">
+      <p class="uk-text-center uk-modal-title uk-text-light uk-text-capitalize">add loading facility</p>
+    </div>
+    <div class="uk-modal-body" uk-overflow-auto>
+      <form class="uk-form-stacked">
+        <div class="uk-margin">
+          <label class="uk-form-label uk-text-bold" for="form-facility-name">Facility Name</label>
+          <div class="uk-form-controls">
+            <input class="uk-input uk-text-small uk-text-light" id="form-facility-name" type="text" placeholder="Well Name">
+          </div>
+        </div>
+        <div class="uk-margin">
+          <label class="uk-form-label uk-text-bold" for="form-facility-location">Location</label>
+          <div class="uk-form-controls">
+            <input class="uk-input uk-text-small uk-text-light" id="form-facility-location" type="text" placeholder="Location">
+          </div>
+        </div>
+        <div class="uk-margin">
+          <label class="uk-form-label uk-text-bold" for="form-facility-direction">Directions</label>
+          <div class="uk-form-controls">
+            <textarea id="form-facility-direction" class="uk-textarea uk-text-small uk-text-light" rows="2" placeholder="Directions"></textarea>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="uk-modal-footer uk-text-right">
+      <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+      <button class="uk-button uk-button-primary" type="button">Add</button>
+    </div>
+  </div>
+</div>
+<div class="uk-padding">
+  <div class="uk-grid-large uk-grid-match uk-child-width-expand@s uk-text-center" uk-grid>
+    {% for facility in facilities %}
+    <div class="uk-grid-width-1-4">
+      <a href="{% url 'facility' facility.id %}">
+      <div class="uk-card uk-card-default uk-card-body uk-card-hover uk-card-large uk-border-pill">
+        <p class="uk-text-bold uk-text-lead uk-text-uppercase uk-margin-remove">{{ facility.name }}</p>
+        <p class="uk-margin-remove uk-text-italic">{{ facility.location }}</p>
+      </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+{% endblock %}

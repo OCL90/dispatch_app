@@ -1,0 +1,58 @@
+{% extends 'frac/main.html' %}
+{% load widget_tweaks %}
+{% block content %}
+
+
+<div class="uk-card uk-card-default uk-width-1-2@m uk-align-center">
+  <div class="uk-card-header">
+    <div class="uk-grid-small uk-flex-middle" uk-grid>
+      <div class="uk-width-expand">
+        <h3 class="uk-card-title uk-margin-remove-bottom uk-text-uppercase uk-text-center">add driver</h3>
+      </div>
+    </div>
+  </div>
+  <div class="uk-card-body">
+    <form method="POST" class="uk-form-stacked" id="new_well_form">
+      {% csrf_token %}
+      <div class="uk-margin">
+        <label class="uk-form-label uk-text-bold" for="form-well-name">Driver Name</label>
+        <div class="uk-form-controls">
+          {% render_field form.name class="uk-input uk-text-small uk-text-light" placeholder="Driver Name" %}
+        </div>
+      </div>
+      <div class="uk-margin">
+        <label class="uk-form-label uk-text-bold" for="form-operator">Employer</label>
+        <div class="uk-form-controls">
+          {% render_field form.employer class="uk-input uk-text-small uk-text-light" placeholder="Employer"%}
+        </div>
+      </div>
+      <div class="uk-margin">
+        <label class="uk-form-label uk-text-bold" for="form-service-co">Status</label>
+        <div class="uk-form-controls">
+          {% render_field form.status class="uk-select uk-text-small uk-text-light" %}
+        </div>
+      </div>
+      <div class="uk-margin">
+        <label class="uk-form-label uk-text-bold" for="form-service-co">Truck #</label>
+        <div class="uk-form-controls">
+          {% render_field form.truck class="uk-select uk-text-small uk-text-light" %}
+        </div>
+      </div>
+      <div class="uk-margin">
+        <label class="uk-form-label uk-text-bold" for="form-service-co">Trailer #</label>
+        <div class="uk-form-controls">
+          {% render_field form.trailer class="uk-select uk-text-small uk-text-light" %}
+        </div>
+      </div>
+    </div>
+    <div class="uk-card-footer uk-text-right">
+      <a href="{% url 'drivers-page' %}"><button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button></a>
+      <button class="uk-button uk-button-primary" type="submit">Add</button>
+    </div>
+    </form>
+  </div>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,205 @@
+{% extends 'frac/main.html' %}
+
+{% block content %}
+
+<div class="uk-text-center uk-padding">
+  <h1 class="uk-text-uppercase">Drivers</h1>
+</div>
+<div>
+  <a href="{% url 'create_driver' %}"><button class="uk-button uk-button-primary uk-border-rounded" uk-icon="plus-circle">add driver </button></a>
+</div>
+<div id="driver-modal-overflow" uk-modal>
+  <div class="uk-modal-dialog">
+    <button class="uk-modal-close-default" type="button" uk-close></button>
+    <div class="uk-modal-header">
+      <p class="uk-text-center uk-modal-title uk-text-light uk-text-capitalize">add driver</p>
+    </div>
+    <div class="uk-modal-body" uk-overflow-auto>
+      <form class="uk-form-stacked">
+        <div class="uk-margin">
+          <label class="uk-form-label uk-text-bold" for="form-driver-name">Driver Name</label>
+          <div class="uk-form-controls">
+            <input class="uk-input uk-text-small uk-text-light" id="form-driver-name" type="text" placeholder="Driver Name">
+          </div>
+        </div>
+        <div class="uk-margin">
+          <label class="uk-form-label uk-text-bold" for="form-employer">Employer</label>
+          <div class="uk-form-controls">
+            <input class="uk-input uk-text-small uk-text-light" id="form-employer" type="text" placeholder="Employer">
+          </div>
+        </div>
+        <div class="uk-margin">
+          <label class="uk-form-label uk-text-bold" for="form-status">Status</label>
+          <div class="uk-form-controls">
+            <select class="uk-select uk-text-small uk-text-light" id="form-status">
+              <option value=""></option>
+            </select>
+          </div>
+        </div>
+        <div class="uk-margin">
+          <label class="uk-form-label uk-text-bold" for="form-truck">Truck #</label>
+          <div class="uk-form-controls">
+            <select class="uk-select uk-text-small uk-text-light" id="form-truck">
+              <option value=""></option>
+              {% for truck in trucks %}
+              <option>{{ truck.name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+        <div class="uk-margin">
+          <label class="uk-form-label uk-text-bold" for="form-trailer">Trailer</label>
+          <div class="uk-form-controls">
+            <select class="uk-select uk-text-small uk-text-light" id="form-trailer">
+              <option value=""></option>
+              {% for trailer in trailers %}
+              <option>{{ trailer.name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="uk-modal-footer uk-text-right">
+      <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+      <button class="uk-button uk-button-primary" type="button">Add</button>
+    </div>
+  </div>
+</div>
+<div class="uk-margin-medium-top">
+  <ul class="uk-flex-center" uk-tab>
+      <li><a href="#">On Duty ({{ onduty }})</a></li>
+      <li><a href="#">Off Duty ({{ offduty }})</a></li>
+      <li><a href="#">Down ({{ down }})</a></li>
+      <li><a href="#">Drivers ({{ total_drivers }})</a></li>
+  </ul>
+  <ul class="uk-switcher uk-padding">
+    <li>
+      <div>
+        <div class="uk-overflow-auto uk-height-large uk-padding">
+          <table id="dispatch_table" class="uk-table uk-table-divider uk-table-hover uk-table-condensed">
+            <thead>
+              <tr>
+                <th>Driver</th>
+                <th>Employer</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody class="uk-text-light">
+              {% for driver in drivers %}
+              {% if driver.status == 'On Duty' %}
+              <tr>
+                <td><a href="#">{{ driver.name }}</a></td>
+                <td>{{ driver.employer }}</td>
+                <td class="uk-text-success">{{ driver.status }}</td>
+                <td>
+                  <button class="uk-button uk-button-default uk-button-small" type="button">Update</button>
+                </td>
+              </tr>
+              {% endif %}
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div>
+        <div class="uk-overflow-auto uk-height-large uk-padding">
+          <table id="dispatch_table" class="uk-table uk-table-divider uk-table-hover uk-table-condensed">
+            <thead>
+              <tr>
+                <th>Driver</th>
+                <th>Employer</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody class="uk-text-light">
+              {% for driver in drivers %}
+              {% if driver.status == 'Off Duty' %}
+              <tr>
+                <td><a href="#">{{ driver.name }}</a></td>
+                <td>{{ driver.employer }}</td>
+                <td class="uk-text-danger">{{ driver.status }}</td>
+                <td>
+                  <button class="uk-button uk-button-default uk-button-small" type="button">Update</button>
+                </td>
+              </tr>
+              {% endif %}
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div>
+        <div class="uk-overflow-auto uk-height-large uk-padding">
+          <table id="dispatch_table" class="uk-table uk-table-divider uk-table-hover uk-table-condensed">
+            <thead>
+              <tr>
+                <th>Driver</th>
+                <th>Employer</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody class="uk-text-light">
+              {% for driver in drivers %}
+              {% if driver.status == 'Down' %}
+              <tr>
+                <td><a href="#">{{ driver.name }}</a></td>
+                <td>{{ driver.employer }}</td>
+                <td class="uk-text-warning">{{ driver.status }}</td>
+                <td>
+                  <button class="uk-button uk-button-default uk-button-small" type="button">Update</button>
+                </td>
+              </tr>
+              {% endif %}
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div>
+        <div class="uk-overflow-auto uk-height-large uk-padding">
+          <table id="dispatch_table" class="uk-table uk-table-divider uk-table-hover uk-table-condensed">
+            <thead>
+              <tr>
+                <th>Driver</th>
+                <th>Employer</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody class="uk-text-light">
+              {% for driver in drivers %}
+              <tr>
+                <td><a href="#">{{ driver.name }}</a></td>
+                <td>{{ driver.employer }}</td>
+                {% if driver.status == 'On Duty'%}
+                <td class="uk-text-success">{{ driver.status }}</td>
+                {% elif driver.status == 'Off Duty'%}
+                <td class="uk-text-danger">{{ driver.status }}</td>
+                {% elif driver.status == 'Down'%}
+                <td class="uk-text-warning">{{ driver.status }}</td>
+                {% endif %}
+                <td>
+                  <button class="uk-button uk-button-default uk-button-small" type="button">Update</button>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,146 @@
+{% extends 'frac/main.html' %}
+
+{% block content %}
+
+<div>
+  <h1 class="uk-text-center uk-text-uppercase uk-margin-remove">{{ well.operator.name }} <span uk-icon="icon:chevron-double-right ; ratio:3"></span> {{ well.name }}</h1>
+</div>
+<div class="uk-align-center uk-width-xxlarge">
+  <p class="uk-text-center uk-text-italic uk-margin-remove"><span class="uk-text-bold">Frac Company:</span> {{ well.serviceco.name }}</p>
+  <p class="uk-text-center uk-text-italic uk-margin-remove"><span class="uk-text-bold">Crew:</span> {{ well.crew.name }}</p>
+  <p class="uk-text-center uk-text-italic uk-margin-remove"><span class="uk-text-bold">Location:</span> {{ well.location }}</p>
+  <p class="uk-text-center uk-text-italic uk-margin-remove"><span class="uk-text-bold">Directions:</span> <br> {{ well.directions }}</p>
+</div>
+<div class="uk-child-width-expand@s uk-text-center" uk-grid>
+  <div>
+    <button class="uk-button uk-button-primary uk-border-rounded" href="#addsand-modal-center" uk-toggle uk-icon="plus-circle">add sand type </button>
+  </div>
+  <div>
+    <a href="{% url 'update_well' well.id %}"><button class="uk-button uk-button-secondary uk-border-rounded">update well info</button></a>
+  </div>
+  <div>
+    <a href="{% url 'delete_well' well.id %}"><button class="uk-button uk-button-danger uk-border-rounded">delete well</button></a>
+  </div>
+</div>
+<div id="addsand-modal-center" class="uk-flex-top" uk-modal>
+  {% include 'frac/sand_form.html' %}
+  <!-- <div class="uk-modal-dialog">
+    <button class="uk-modal-close-default" type="button" uk-close></button>
+    <div class="uk-modal-header">
+        <p class="uk-text-center uk-modal-title uk-text-light uk-text-capitalize">add sand type</p>
+    </div>
+    <div class="uk-modal-body">
+      <form class="uk-form-stacked">
+        <div class="uk-margin">
+          <label class="uk-form-label uk-text-bold" for="form-sand-type">Sand Type</label>
+          <div class="uk-form-controls">
+            <input class="uk-input uk-text-small uk-text-light" id="form-sand-type" type="text" placeholder="Sand Type">
+          </div>
+        </div>
+        <div class="uk-margin">
+          <label class="uk-form-label uk-text-bold" for="form-loading-facility">Loading Facility</label>
+          <div class="uk-form-controls">
+            <select class="uk-select uk-text-small uk-text-light" id="form-loading-facility">
+              <option value=""></option>
+              <option></option>
+            </select>
+          </div>
+        </div>
+        <div class="uk-margin">
+          <label class="uk-form-label uk-text-bold" for="form-po">PO#</label>
+          <div class="uk-form-controls">
+            <input class="uk-input uk-text-small uk-text-light" id="form-po" type="text" placeholder="PO#">
+          </div>
+        </div>
+        <div class="uk-margin">
+          <label class="uk-form-label uk-text-bold" for="form-total-sand">Total ammount sand</label>
+          <div class="uk-form-controls">
+            <input class="uk-input uk-text-small uk-text-light" id="form-total-sand" type="text" placeholder="Total amount sand">
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="uk-modal-footer uk-text-right">
+        <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+        <button class="uk-button uk-button-primary" type="button">Add</button>
+    </div>
+  </div> -->
+</div>
+
+<div class="uk-margin-medium-top">
+  <ul class="uk-flex-center" uk-tab>
+    <li><a href="#">Ready</a></li>
+    {% for sand in sands %}
+    <li><a href="#">{{ sand.sand_name }}</a></li>
+    {% endfor %}
+</diiv>
+    
+  </ul>
+  <div class="uk-switcher">
+    <div class="uk-padding">
+      <div class="uk-text-center">
+        <h1>Ready Trucks</h1>
+      </div>
+    </div>
+    {% for sand in sands %}
+    <div id="prefill_details" class="uk-padding ">
+      <div class="uk-text-center" uk-grid>
+        <p class="uk-width-1-4"></p>
+        <p class="uk-width-1-4@m"><span class="uk-text-bold"> Loading Facility: </span><a href="{% url 'facility' sand.loading_facility.id %}">{{ sand.loading_facility.name }}</a></p>
+        <p class="uk-width-1-4@m"><span class="uk-text-bold">PO#: </span>{{ sand.po }}</p>
+        <p class="uk-width-1-4"></p>
+      </div>
+      <div class="uk-text-center" uk-grid>
+        <p class="uk-width-1-3@m"><span class="uk-text-bold">Total Sand Amount: </span>{{ sand.total_sand }}</p>
+        <p class="uk-width-1-3@m"><span class="uk-text-bold">Amount Ordered: </span></p>
+        <p class="uk-width-1-3@m"><span class="uk-text-bold">Amount Remaining: </span></p>
+      </div>
+      <div class="uk-padding">
+        <button class="uk-button uk-button-secondary uk-align-center uk-border-rounded" href="#order-modal-center" uk-toggle uk-icon="plus-circle">new order </button>
+      </div>
+      {% include 'frac/sand_orders.html' %}
+    </div>
+    {% endfor %}
+    <div id="order-modal-center" class="uk-flex-top" uk-modal>
+      <div class="uk-modal-dialog">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="uk-modal-header">
+            <p class="uk-text-center uk-modal-title uk-text-light uk-text-capitalize">new order</p>
+        </div>
+        <div class="uk-modal-body">
+          <form class="uk-form uk-form-stacked">
+            <div class="uk-margin">
+              <label class="uk-form-label uk-text-bold" for="form-loading-facility">Driver</label>
+              <div class="uk-form-controls">
+                <select class="uk-select uk-text-small uk-text-light" id="form-loading-facility">
+                  <option value=""></option>
+                  {% for ad in available_drivers %}
+                  <option value="{{ ad.id }}">{{ ad.name }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+            <div class="uk-margin">
+              <label class="uk-form-label uk-text-bold" for="form-appt-time">Appointment Time</label>
+              <div class="uk-form-controls">
+                <input class="uk-input uk-text-small uk-text-light" id="form-appt-time" type="text" placeholder="Appointment Time">
+              </div>
+            </div>
+            <div class="uk-margin">
+              <label class="uk-form-label uk-text-bold" for="form-load-weight">Load Weight Requested</label>
+              <div class="uk-form-controls">
+                <input class="uk-input uk-text-small uk-text-light" id="form-load-weight" type="text" placeholder="Weight">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="uk-modal-footer uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+            <button class="uk-button uk-button-primary" type="button">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+{% endblock %}

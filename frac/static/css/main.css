@@ -1,0 +1,33 @@
+a:hover{
+  text-decoration: none;
+}
+#dispatch_table th, #loaded_table th, #complete_table th{
+  text-align: center;
+  color: black;
+}
+.uk-button-default{
+  background-color: white;
+}
+#dispatch_table td, #loaded_table td, #complete_table td{
+  padding: 5px;
+  text-align: center;
+}
+#success{
+  background-color: green;
+  color: white;
+}
+#warning{
+  background-color: goldenrod;
+  color: white;
+}
+#prefill_details div p{
+  display: inline-block;
+}
+#trucks_trailers_table td{
+  padding: 5px;
+  text-align: center;
+}
+#uk-card-secondary{
+  background: #F0506E;
+  color: white;
+}

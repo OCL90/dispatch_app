@@ -1,0 +1,117 @@
+{% block content %}
+
+
+<h2 class="uk-text-uppercase uk-text-bolder uk-margin-medium-top uk-margin-small-bottom uk-text-center">Dispatched</h2>
+  <div class="uk-overflow-auto uk-height-medium uk-margin-medium ">
+    <table id="dispatch_table" class="uk-table uk-table-divider uk-table-hover uk-table-condensed">
+      <thead>
+        <tr>
+          <th>Driver</th>
+          <th>Appt Time</th>
+          <th>Requested<br>Load Weight</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody class="uk-text-light">
+        {% for order in dispatched %}
+        {% if sand.id == order.sand.id %}
+        <tr>
+          <td>{{ order.driver.name }}</td>
+          <td>{{ order.appt_time }}</td>
+          <td>{{ order.request_weight }}</td>
+          <td>
+            <button class="uk-button uk-button-default uk-button-small" type="button">Edit</button>
+            <button  id="warning" class="uk-button uk-button-default uk-button-small" type="button">Loaded</button>
+          </td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <h2 class="uk-text-uppercase uk-text-bolder uk-margin-medium-top uk-margin-small-bottom uk-text-center">Loaded</h2>
+  <div class="uk-overflow-auto uk-height-medium">
+    <table id="loaded_table" class="uk-table uk-table-divider uk-table-hover uk-table-condensed uk-margin-medium">
+      <thead>
+        <tr>
+          <th>Driver</th>
+          <th>Appt Time</th>
+          <th>Load Date</th>
+          <th>Load<br>Time In </th>
+          <th>Load<br>Time Out</th>
+          <th>Ticket #</th>
+          <th>BOL #</th>
+          <th>Actual<br>Load Weight</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody class="uk-text-light">
+        {% for order in loaded %}
+        {% if sand.id == order.sand.id %}
+        <tr>
+          <td>{{ order.driver.name}}</td>
+          <td>{{ order.appt_time }} hrs</td>
+          <td>{{ order.load_date }}</td>
+          <td>{{ order.load_time_in }} hrs</td>
+          <td>{{ order.load_time_out }} hrs</td>
+          <td>{{ order.ticket_num }}</td>
+          <td>{{ order.bol_num }}</td>
+          <td>{{ order.actual_weight}} lbs</td>
+          <td>
+            <button class="uk-button uk-button-default uk-button-small" type="button">Edit</button>
+            <button id="success" class="uk-button uk-button-default uk-button-small" type="button">Offloaded</button>
+            <button class="uk-button uk-button-danger uk-button-small" type="button">Divert</button>
+          </td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <h2 class="uk-text-uppercase uk-text-bolder uk-margin-medium-top uk-margin-small-bottom uk-text-center">Offloaded/Complete</h2>
+  <div class="uk-overflow-auto uk-height-medium">
+    <table id="complete_table" class="uk-table uk-table-divider uk-table-hover uk-table-condensed uk-margin-medium">
+      <thead>
+        <tr>
+          <th>Driver</th>
+          <th>Appt Time</th>
+          <th>Load Date</th>
+          <th>Load<br>Time In </th>
+          <th>Load<br>Time Out</th>
+          <th>Ticket #</th>
+          <th>BOL #</th>
+          <th>Actual<br>Load Weight</th>
+          <th>Location<br>Arrived Date</th>
+          <th>Location<br>Arrived Time</th>
+          <th>Location<br>Departed Date</th>
+          <th>Location<br>Departed Time</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody class="uk-text-light">
+        {% for order in complete %}
+        {% if sand.id == order.sand.id %}
+        <tr>
+          <td>{{ order.driver.name}}</td>
+          <td>{{ order.appt_time }} hrs</td>
+          <td>{{ order.load_date }}</td>
+          <td>{{ order.load_time_in }} hrs</td>
+          <td>{{ order.load_time_out }} hrs</td>
+          <td>{{ order.ticket_num }}</td>
+          <td>{{ order.bol_num }}</td>
+          <td>{{ order.actual_weight}} lbs</td>
+          <td>{{ order.loc_arrive_date }}</td>
+          <td>{{ order.loc_arrive_time }}</td>
+          <td>{{ order.loc_depart_date }}</td>
+          <td>{{ order.loc_depart_time }}</td>
+          <td>
+            <button class="uk-button uk-button-default uk-button-small" type="button">Edit</button>
+          </td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+{% endblock %}

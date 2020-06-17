@@ -1,0 +1,43 @@
+<nav class="uk-navbar uk-navbar-container uk-padding-small uk-padding-remove-vertical" uk-sticky="bottom: #offset">
+  <div class="uk-navbar-left">
+      <a class="uk-navbar-toggle" href="#" uk-toggle="target: #offcanvas-nav-primary">
+          <span uk-navbar-toggle-icon></span> <span class="uk-margin-small-left">Menu</span>
+      </a>
+  </div>
+  <div class="uk-navbar-center uk-text-break">
+    <a class="uk-navbar-item uk-logo uk-text-uppercase" href="{% url 'home' %}">Dispatch Portal</a>
+  </div>
+  <div class="uk-navbar-right">
+    <ul class="uk-navbar-nav uk-margin-large-right uk-width-auto">
+      <li><a href="#">Hello James</a></li>
+      <div uk-dropdown>
+        <ul class="uk-nav uk-dropdown-nav">
+          <li class="uk-active"><a href="#">Active</a></li>
+          <li><a href="#">Item</a></li>
+          <li class="uk-nav-header">Header</li>
+          <li><a href="#">Item</a></li>
+          <li><a href="#">Item</a></li>
+          <li class="uk-nav-divider"></li>
+          <li><a href="#">Item</a></li>
+        </ul>
+      </div>    
+      <li><img class="uk-border-circle" width="40" height="40" src=""></li>
+    </ul>
+  </div>
+</nav>
+<div id="offcanvas-nav-primary" uk-offcanvas="overlay: true">
+  <div class="uk-offcanvas-bar uk-flex uk-flex-column">
+    <button class="uk-offcanvas-close" type="button" uk-close></button>
+    <div class="uk-position-large uk-position-top-center uk-overlay uk-overlay-default">
+      <h1>logo</h1>
+    </div>
+      <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical">
+        <li class="uk-parent"><a href="{% url 'home' %}">Wells</a></li>
+        <li class="uk-parent"><a href="{% url 'operators-page' %}">Operators</a></li>
+        <li class="uk-parent"><a href="{% url 'serviceco-page' %}">Service Companies</a></li>
+        <li class="uk-parent"><a href="{% url 'facilities-page' %}">Loading Facilities</a></li>
+        <li class="uk-parent"><a href="{% url 'drivers-page' %}">Drivers</a></li>
+        <li class="uk-parent"><a href="{% url 'trucks-page' %}">Trucks/Trailers</a></li>
+      </ul>
+  </div>
+</div>
