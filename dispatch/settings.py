@@ -25,7 +25,7 @@ SECRET_KEY = 'ur!kd8di!av*teb1b(zw)*=1xgbabs!#5$o*72)f96pm!5m6c1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['evening-fortress-77302.herokuapp.com', 'lovalhost']
 
 
 # Application definition
