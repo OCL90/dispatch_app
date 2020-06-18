@@ -25,7 +25,7 @@ SECRET_KEY = 'ur!kd8di!av*teb1b(zw)*=1xgbabs!#5$o*72)f96pm!5m6c1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['evening-fortress-77302.herokuapp.com', 'lovalhost']
+ALLOWED_HOSTS = ['evening-fortress-77302.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -78,8 +78,13 @@ WSGI_APPLICATION = 'dispatch.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE' : 'django.db.backends.postgresql',
+        'NAME' : 'dcrf3n049fd4ov',
+        'HOST' : 'ec2-52-20-248-222.compute-1.amazonaws.com',
+        'PORT' : 5432,
+        'USER' : 'njsnemzxldexuu',
+        'PASSWORD': 'c7d3327c52951698d3801a21a14e8f581b943da38edc7035adfc9abf71349146'
+
     }
 }
 
@@ -122,3 +127,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
