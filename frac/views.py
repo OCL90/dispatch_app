@@ -99,21 +99,6 @@ def cSandType(request,pk):
   return render(request, 'frac/sand_form.html', context)
 
 
-def createSandType(request):
-  form = SandForm()
-  if request.method == 'POST':
-    print('Printing POST: ', request.POST)
-    form = SandForm(request.POST)
-    if form.is_valid():
-      form.save()
-      return redirect('/')
-    else:
-      print("error")
-
-  context = {'form': form}
-  return render(request, 'frac/sand_form.html', context)
-
-
 def operatorsPage(request):
   context = {}
   return render(request, 'frac/operators_page.html', context)

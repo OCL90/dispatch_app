@@ -18,8 +18,6 @@ urlpatterns = [
   path('well/<str:pk>/update/', views.updateWell, name='update_well'),
   path('well/<str:pk>/delete/', views.deleteWell, name='delete_well'),
 
-  path('create_sand/', views.createSandType, name='create_sand'),
-
   path('c_sand/<str:pk>/', views.cSandType, name='c_sand'),
 
 

@@ -1,19 +1,19 @@
 <div id="add_sand-modal-center" uk-modal>
   <div class="uk-card uk-card-default uk-width-1-2@m uk-align-center">
-    <div class="uk-modal-header">
+    <div class="uk-card-header">
       <div class="uk-grid-small uk-flex-middle" uk-grid>
         <div class="uk-width-expand">
           <h3 class="uk-card-title uk-margin-remove-bottom uk-text-uppercase uk-text-center">add new sand type</h3>
         </div>
       </div>
     </div>
-    <div class="uk-modal-body">
+    <div class="uk-card-body">
       <form action="/c_sand/{{well.id}}/" method="POST" class="uk-form-stacked">
         {% csrf_token %}
         <div class="uk-margin">
           <label class="uk-form-label uk-text-bold">Well</label>
           <div class="uk-form-controls">
-            <select class="uk-select" name="well_id">
+            <select class="uk-select uk-text-small uk-text-light" name="well_id">
               <option value="{{well.id}}">{{well.name}}</option>
             </select>
           </div>
@@ -21,19 +21,19 @@
         <div class="uk-margin">
           <label class="uk-form-label uk-text-bold">Sand Type</label>
           <div class="uk-form-controls">
-            <input class="uk-input" type="text" name="sand_name" placeholder="Sand Type">
+            <input class="uk-input uk-text-small uk-text-light" type="text" name="sand_name" placeholder="Sand Type">
           </div>
         </div>
         <div class="uk-margin">
           <label class="uk-form-label uk-text-bold">Prefill (MM/DD/YYYY)</label>
           <div class="uk-form-controls">
-            <input class="uk-input" type="text" id="datepicker" name="date_prefill">
+            <input class="uk-input uk-text-small uk-text-light" type="text" id="datepicker" name="date_prefill">
           </div>
         </div>
         <div class="uk-margin">
           <label class="uk-form-label uk-text-bold">Loading Facility</label>
           <div class="uk-form-controls">
-            <select class="uk-select" name="facilities">
+            <select class="uk-select uk-text-small uk-text-light" name="facilities">
               <option value=""></option>
               {% for facility in facilities %}
               <option value="{{facility.id}}">{{facility.name}}</option>
@@ -44,16 +44,16 @@
         <div class="uk-margin">
           <label class="uk-form-label uk-text-bold">PO #</label>
           <div class="uk-form-controls">
-            <input class="uk-input" type="text" name="po" placeholder="PO #">
+            <input class="uk-input uk-text-small uk-text-light" type="text" name="po" placeholder="PO #">
           </div>
         </div>
         <div class="uk-margin">
           <label class="uk-form-label uk-text-bold">Total Ammount Sand</label>
           <div class="uk-form-controls">
-            <input class="uk-input" type="text" name="total_sand" placeholder="Total Ammount Sand">
+            <input class="uk-input uk-text-small uk-text-light" type="text" name="total_sand" placeholder="Total Ammount Sand">
           </div>
         </div>
-        <div class="uk-modal-footer uk-text-right">
+        <div class="uk-card-footer uk-text-right">
           <a href="{% url 'home' %}"><button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button></a>
           <button class="uk-button uk-button-primary" type="submit">Add</button>
         </div>
