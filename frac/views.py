@@ -42,12 +42,23 @@ def sand_type(request, pk1):
 def createWell(request):
   form = WellForm()
   if request.method == 'POST':
+    print('Printing POST: ', request.POST)
     form = WellForm(request.POST)
+    print('Printing FORM: ', form)
     if form.is_valid():
-      form.save()
+      name = form.cleaned_data['name']
+      operator = form.cleaned_data['operator']
+      serviceco = form.cleaned_data['serviceco']
+      crew = form.cleaned_data['crew']
+      location = form.cleaned_data['location']
+      directions = form.cleaned_data['directions']
+      f = Well(name=name, operator_id=operator, serviceco_id=serviceco, crew_id=crew, location=location, directions=directions)
+      f.save()
       return redirect('/')
-
-  context = {'form': form}
+    else:
+      print("error")
+  
+  context = {}
   return render(request, 'frac/well_form.html', context)
 
 def updateWell(request, pk):
@@ -94,8 +105,6 @@ def cSandType(request,pk):
       return redirect('well', pk=well.id)
     else:
       print("error")
-
-
 
 def operatorsPage(request):
   context = {}

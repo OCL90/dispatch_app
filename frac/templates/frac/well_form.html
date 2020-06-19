@@ -9,12 +9,12 @@
       </div>
     </div>
     <div class="uk-card-body">
-      <form method="POST" class="uk-form-stacked" id="new_well_form">
+      <form action="/create_well/" method="POST" class="uk-form-stacked" id="new_well_form">
         {% csrf_token %}
         <div class="uk-margin">
           <label class="uk-form-label uk-text-bold" for="form-well-name">Well Name</label>
           <div class="uk-form-controls">
-            <input class="uk-input uk-text-small uk-text-light" type="text" name="well_name" placeholder="Well Name">
+            <input class="uk-input uk-text-small uk-text-light" type="text" name="name" placeholder="Well Name">
           </div>
         </div>
         <div class="uk-margin">
@@ -53,13 +53,13 @@
         <div class="uk-margin">
           <label class="uk-form-label uk-text-bold" for="form-location">Location</label>
           <div class="uk-form-controls">
-            <input class="uk-input uk-text-small uk-text-light" type="text" name="well_location" placeholder="Location">
+            <input class="uk-input uk-text-small uk-text-light" type="text" name="location" placeholder="Location">
           </div>
         </div>
         <div class="uk-margin">
           <label class="uk-form-label uk-text-bold" for="form-directions">Directions</label>
           <div class="uk-form-controls">
-            <textarea class="uk-textarea uk-text-small uk-text-light" name="well_directions" rows="2" placeholder="Directions"></textarea>
+            <textarea class="uk-textarea uk-text-small uk-text-light" name="directions" rows="2" placeholder="Directions"></textarea>
           </div>
         </div>
       </div>
