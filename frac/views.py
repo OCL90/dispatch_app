@@ -95,8 +95,6 @@ def cSandType(request,pk):
     else:
       print("error")
 
-  context = {'form': form}
-  return render(request, 'frac/sand_form.html', context)
 
 
 def operatorsPage(request):

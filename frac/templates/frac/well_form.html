@@ -1,64 +1,76 @@
-{% extends 'frac/main.html' %}
-{% load widget_tweaks %}
-{% block content %}
-
-<div class="uk-card uk-card-default uk-width-1-2@m uk-align-center">
-  <div class="uk-card-header">
-    <div class="uk-grid-small uk-flex-middle" uk-grid>
-      <div class="uk-width-expand">
-        <h3 class="uk-card-title uk-margin-remove-bottom uk-text-uppercase uk-text-center">add new well</h3>
-      </div>
-    </div>
-  </div>
-  <div class="uk-card-body">
-    <form method="POST" class="uk-form-stacked" id="new_well_form">
-      {% csrf_token %}
-      <div class="uk-margin">
-        <label class="uk-form-label uk-text-bold" for="form-well-name">Well Name</label>
-        <div class="uk-form-controls">
-          {% render_field form.name class="uk-input uk-text-small uk-text-light" placeholder="Well Name" %}
-        </div>
-      </div>
-      <div class="uk-margin">
-        <label class="uk-form-label uk-text-bold" for="form-operator">Operator</label>
-        <div class="uk-form-controls">
-          {% render_field form.operator class="uk-select uk-text-small uk-text-light" %}
-        </div>
-      </div>
-      <div class="uk-margin">
-        <label class="uk-form-label uk-text-bold" for="form-service-co">Service Company</label>
-        <div class="uk-form-controls">
-          {% render_field form.serviceco class="uk-select uk-text-small uk-text-light" %}
-        </div>
-      </div>
-      <div class="uk-margin">
-        <label class="uk-form-label uk-text-bold" for="form-crew">Crew</label>
-        <div class="uk-form-controls">
-          {% render_field form.crew class="uk-select uk-text-small uk-text-light" %}
-        </div>
-      </div>
-      <div class="uk-margin">
-        <label class="uk-form-label uk-text-bold" for="form-location">Location</label>
-        <div class="uk-form-controls">
-          {% render_field form.location class="uk-input uk-text-small uk-text-light" placeholder="Location" %}
-        </div>
-      </div>
-      <div class="uk-margin">
-        <label class="uk-form-label uk-text-bold" for="form-directions">Directions</label>
-        <div class="uk-form-controls">
-          {% render_field form.directions rows="2" class="uk-textarea uk-text-small uk-text-light" placeholder="Directions" %}
+<div id="well-modal-center" uk-modal>
+  <div class="uk-card uk-card-default uk-width-1-2@m uk-align-center">
+    <button class="uk-modal-close-default" type="button" uk-close></button>
+    <div class="uk-card-header">
+      <div class="uk-grid-small uk-flex-middle" uk-grid>
+        <div class="uk-width-expand">
+          <h3 class="uk-card-title uk-margin-remove-bottom uk-text-uppercase uk-text-center">add new well</h3>
         </div>
       </div>
     </div>
-    <div class="uk-card-footer uk-text-right">
-      <a href="{% url 'home' %}"><button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button></a>
-      <button class="uk-button uk-button-primary" type="submit">Add</button>
+    <div class="uk-card-body">
+      <form method="POST" class="uk-form-stacked" id="new_well_form">
+        {% csrf_token %}
+        <div class="uk-margin">
+          <label class="uk-form-label uk-text-bold" for="form-well-name">Well Name</label>
+          <div class="uk-form-controls">
+            <input class="uk-input uk-text-small uk-text-light" type="text" name="well_name" placeholder="Well Name">
+          </div>
+        </div>
+        <div class="uk-margin">
+          <label class="uk-form-label uk-text-bold" for="form-operator">Operator</label>
+          <div class="uk-form-controls">
+            <select class="uk-select uk-text-small uk-text-light" name="operator">
+              <option value=""></option>
+              {% for operator in operators %}
+              <option value="{{operator.id}}">{{operator.name}}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+        <div class="uk-margin">
+          <label class="uk-form-label uk-text-bold" for="form-service-co">Service Company</label>
+          <div class="uk-form-controls">
+            <select class="uk-select uk-text-small uk-text-light" name="serviceco">
+              <option value=""></option>
+              {% for serviceco in servicecos %}
+              <option value="{{serviceco.id}}">{{serviceco.name}}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+        <div class="uk-margin">
+          <label class="uk-form-label uk-text-bold" for="form-crew">Crew</label>
+          <div class="uk-form-controls">
+            <select class="uk-select uk-text-small uk-text-light" name="crew">
+              <option value=""></option>
+              {% for crew in crews %}
+              <option value="{{crew.id}}">{{crew.name}}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+        <div class="uk-margin">
+          <label class="uk-form-label uk-text-bold" for="form-location">Location</label>
+          <div class="uk-form-controls">
+            <input class="uk-input uk-text-small uk-text-light" type="text" name="well_location" placeholder="Location">
+          </div>
+        </div>
+        <div class="uk-margin">
+          <label class="uk-form-label uk-text-bold" for="form-directions">Directions</label>
+          <div class="uk-form-controls">
+            <textarea class="uk-textarea uk-text-small uk-text-light" name="well_directions" rows="2" placeholder="Directions"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="uk-card-footer uk-text-right">
+        <a href="{% url 'home' %}"><button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button></a>
+        <button class="uk-button uk-button-primary" type="submit">Add</button>
+      </div>
+      </form>
     </div>
-    </form>
   </div>
 </div>
-
-{% endblock %}
 
 
 

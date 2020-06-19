@@ -2,10 +2,13 @@ from django.forms import ModelForm
 from django import forms
 from .models import *
 
-class WellForm(ModelForm):
-  class Meta:
-    model = Well
-    fields = '__all__'
+class WellForm(forms.Form):
+  name = forms.CharField(required=True)
+  operator = forms.CharField(required=True)
+  serviceco = forms.CharField(required=True)
+  crew = forms.CharField(required=True)
+  location = forms.CharField(required=True)
+  directions = forms.CharField(required=True)
 
 class SandForm(forms.Form):
   sand_name = forms.CharField(required=True)

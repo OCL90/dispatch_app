@@ -9,10 +9,10 @@
 
 <div class="uk-child-width-expand@s uk-text-center" uk-grid>
   <div>
-    <a href="{% url 'create_well' %}"><button class="uk-button uk-button-primary uk-border-rounded" uk-icon="plus-circle">add well </button></a>
+   <button class="uk-button uk-button-primary uk-border-rounded" href="#well-modal-center" uk-toggle uk-icon="plus-circle">add well </button>
   </div>
 </div>
-
+{% include 'frac/well_form.html' %}
 
 
 <div class="uk-margin-medium-top">
