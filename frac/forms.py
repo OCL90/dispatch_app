@@ -9,7 +9,7 @@ class WellForm(forms.Form):
   crew = forms.CharField(required=True)
   location = forms.CharField(required=True)
   directions = forms.CharField(required=True)
-
+  
 class SandForm(forms.Form):
   sand_name = forms.CharField(required=True)
   well_id = forms.CharField(required=True)
@@ -21,4 +21,14 @@ class SandForm(forms.Form):
 class DriverForm(ModelForm):
   class Meta:
     model = Driver
+    fields = '__all__'
+
+  def __init__(self, *args, **kwargs):
+    super(DriverForm, self).__init__(*args, **kwargs)
+    self.fields['truck'].empty_label = "Select"
+    self.fields['trailer'].empty_label = "Select"
+
+class WellsForm(ModelForm):
+  class Meta:
+    model = Well
     fields = '__all__'

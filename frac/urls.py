@@ -20,7 +20,7 @@ urlpatterns = [
 
   path('c_sand/<str:pk>/', views.cSandType, name='c_sand'),
 
-
   path('sand/<str:pk1>/', views.sand_type, name='sand'),
+
 
 ]

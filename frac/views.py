@@ -61,14 +61,15 @@ def createWell(request):
   context = {}
   return render(request, 'frac/well_form.html', context)
 
+
 def updateWell(request, pk):
-  form = WellForm()
+  form = WellsForm()
   well = Well.objects.get(id=pk)
 
-  form = WellForm(instance=well)
+  form = WellsForm(instance=well)
   if request.method == 'POST':
     print('Printing POST: ', request.POST)
-    form = WellForm(request.POST, instance=well)
+    form = WellsForm(request.POST, instance=well)
     if form.is_valid():
       form.save()
       return redirect('well', pk=well.id)
@@ -105,6 +106,9 @@ def cSandType(request,pk):
       return redirect('well', pk=well.id)
     else:
       print("error")
+  
+  context = {}
+  return render(request, 'frac/sand_form.html', context)
 
 def operatorsPage(request):
   context = {}
