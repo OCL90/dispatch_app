@@ -110,6 +110,10 @@ def cSandType(request,pk):
   context = {}
   return render(request, 'frac/sand_form.html', context)
 
+def sandsPage(request):
+  context = {}
+  return render(request, 'frac/sands_page.html', context)
+
 def operatorsPage(request):
   context = {}
   return render(request, 'frac/operators_page.html', context)
