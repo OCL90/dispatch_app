@@ -1,14 +1,14 @@
-<div id="well-modal-center" uk-modal>
-  <div class="uk-card uk-card-default uk-width-1-2@m uk-align-center">
+<div id="well-modal-center" class="uk-flex-top" uk-modal>
+  <div class="uk-modal-dialog">
     <button class="uk-modal-close-default" type="button" uk-close></button>
-    <div class="uk-card-header">
+    <div class="uk-modal-header">
       <div class="uk-grid-small uk-flex-middle" uk-grid>
         <div class="uk-width-expand">
           <h3 class="uk-card-title uk-margin-remove-bottom uk-text-uppercase uk-text-center">add new well</h3>
         </div>
       </div>
     </div>
-    <div class="uk-card-body">
+    <div class="uk-modal-body">
       <form action="/create_well/" method="POST" class="uk-form-stacked" id="new_well_form">
         {% csrf_token %}
         <div class="uk-margin">
@@ -62,13 +62,12 @@
             <textarea class="uk-textarea uk-text-small uk-text-light" name="directions" rows="2" placeholder="Directions"></textarea>
           </div>
         </div>
-      </div>
-      <div class="uk-card-footer uk-text-right">
-        <a href="{% url 'home' %}"><button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button></a>
-        <button class="uk-button uk-button-primary" type="submit">Add</button>
-      </div>
-      </form>
     </div>
+    <div class="uk-modal-footer uk-text-right">
+      <a href="{% url 'home' %}"><button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button></a>
+      <button class="uk-button uk-button-primary" type="submit">Add</button>
+    </div>
+    </form>
   </div>
 </div>
 

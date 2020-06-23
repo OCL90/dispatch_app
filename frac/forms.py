@@ -18,6 +18,14 @@ class SandForm(forms.Form):
   po = forms.CharField(required=True)
   total_sand = forms.CharField(required=True)
 
+
+class OperatorForm(ModelForm):
+  class Meta:
+    model = Operator
+    fields = '__all__'
+
+
+
 class DriverForm(ModelForm):
   class Meta:
     model = Driver
