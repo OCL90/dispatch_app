@@ -32,7 +32,10 @@ def well(request, pk):
   loaded = orders.filter(status='Loaded').all()
   complete = orders.filter(status='Complete').all()
 
-  context = {'well': well, 'sands': sands, 'available_drivers': available_drivers, 'dispatched': dispatched, 'loaded': loaded, 'complete': complete, 'facilities': facilities}
+  form = WellsForm()
+  form = WellsForm(instance=well)
+
+  context = {'well': well, 'sands': sands, 'available_drivers': available_drivers, 'dispatched': dispatched, 'loaded': loaded, 'complete': complete, 'facilities': facilities, 'form': form}
   return render(request, 'frac/well_info.html', context)
 
 def sand_type(request, pk1):
@@ -74,7 +77,7 @@ def updateWell(request, pk):
       form.save()
       return redirect('well', pk=well.id)
 
-  context = {'form': form, 'well': well}
+  context = {}
   return render(request, 'frac/well_update_form.html', context)
 
 def deleteWell(request, pk):

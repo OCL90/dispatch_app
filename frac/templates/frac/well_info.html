@@ -1,5 +1,4 @@
 {% extends 'frac/main.html' %}
-
 {% block content %}
 
 <div>
@@ -16,13 +15,14 @@
     <button class="uk-button uk-button-primary uk-border-rounded" href="#add_sand-modal-center" uk-toggle uk-icon="plus-circle">add sand type </button>
   </div>
   <div>
-    <a href="{% url 'update_well' well.id %}"><button class="uk-button uk-button-secondary uk-border-rounded">update well info</button></a>
+    <button class="uk-button uk-button-secondary uk-border-rounded" href="#update_well-modal-center" uk-toggle>update well info</button>
   </div>
   <div>
     <a href="{% url 'delete_well' well.id %}"><button class="uk-button uk-button-danger uk-border-rounded">delete well</button></a>
   </div>
 </div>
 {% include 'frac/sand_form.html' %}
+{% include 'frac/well_update_form.html' %}
 
 <div class="uk-margin-medium-top">
   <ul class="uk-flex-center" uk-tab>
