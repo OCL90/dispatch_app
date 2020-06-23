@@ -18,11 +18,12 @@
     <button class="uk-button uk-button-secondary uk-border-rounded" href="#update_well-modal-center" uk-toggle>update well info</button>
   </div>
   <div>
-    <a href="{% url 'delete_well' well.id %}"><button class="uk-button uk-button-danger uk-border-rounded">delete well</button></a>
+    <button class="uk-button uk-button-danger uk-border-rounded" href="#delete_well-modal-center" uk-toggle>delete well</button>
   </div>
 </div>
 {% include 'frac/sand_form.html' %}
 {% include 'frac/well_update_form.html' %}
+{% include 'frac/well_delete_form.html' %}
 
 <div class="uk-margin-medium-top">
   <ul class="uk-flex-center" uk-tab>

@@ -1,19 +1,19 @@
-{% extends 'frac/main.html' %}
-
-{% block content %}
-
-<div class="uk-card uk-card-default uk-width-1-2@m uk-align-center">
-  <div id="uk-card-secondary" class="uk-card uk-card-body">
-  <form method="POST" class="uk-form-stacked">
-    {% csrf_token %}
-    <p class="uk-text-center">Are you sure you want to delete "{{ well.name }}" well?</p>
+<div id="delete_well-modal-center" class="uk-flex-top" uk-modal>
+  <div class="uk-modal-dialog">
+    <button class="uk-modal-close-default" type="button" uk-close></button>
+    <div>
+      <div id="uk-card-secondary" class="uk-card uk-card-body">
+      <form action="{% url 'delete_well' well.id %}" method="POST" class="uk-form-stacked">
+        {% csrf_token %}
+        <p class="uk-text-center">Are you sure you want to delete "{{ well.name }}" well?</p>
+      </div>
+      <div class="uk-card-footer uk-text-right">
+        <a href="{%url 'well' well.id %}"><button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button></a>
+        <button class="uk-button uk-button-danger" type="submit">Delete</button>
+      </div>
+      </form>
+    </div>
   </div>
-  <div class="uk-card-footer uk-text-right">
-    <a href="{%url 'well' well.id %}"><button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button></a>
-    <button class="uk-button uk-button-danger" type="submit">Delete</button>
-  </div>
-  </form>
 </div>
 
 
-{% endblock %}

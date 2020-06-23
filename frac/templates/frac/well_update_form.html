@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="uk-modal-body">
-      <form method="POST" class="uk-form-stacked">
+      <form action="{% url 'update_well' well.id %}" method="POST" class="uk-form-stacked">
         {% csrf_token %}
         <div class="uk-margin">
           <label class="uk-form-label uk-text-bold" for="form-well-name">Well Name</label>
