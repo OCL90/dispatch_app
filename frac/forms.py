@@ -24,8 +24,6 @@ class OperatorForm(ModelForm):
     model = Operator
     fields = '__all__'
 
-
-
 class DriverForm(ModelForm):
   class Meta:
     model = Driver

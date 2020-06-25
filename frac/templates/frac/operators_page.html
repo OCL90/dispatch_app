@@ -1,49 +1,33 @@
 {% extends 'frac/main.html' %}
-{% load widget_tweaks %}
+
 {% block content %}
 
 <div class="uk-text-center uk-padding">
   <h1 class="uk-text-uppercase">Operators</h1>
 </div>
 <div class="uk-padding">
-  <button class="uk-button uk-button-primary uk-border-rounded" href="#operator-modal-overflow" uk-toggle uk-icon="plus-circle">add operator </button>
+  <button class="uk-button uk-button-primary uk-border-rounded" href="#operator-modal-center" uk-toggle uk-icon="plus-circle">add operator </button>
 </div>
-<div id="operator-modal-overflow" uk-modal>
-  <div class="uk-modal-dialog">
-    <button class="uk-modal-close-default" type="button" uk-close></button>
-    <div class="uk-modal-header">
-      <div class="uk-grid-small uk-flex-middle" uk-grid>
-        <div class="uk-width-expand">
-          <h3 class="uk-card-title uk-margin-remove-bottom uk-text-uppercase uk-text-center">add new operator</h3>
-        </div>
-      </div>
-    </div>
-    <div class="uk-modal-body">
-      <form method="POST" class="uk-form-stacked">
-        {% csrf_token %}
-        <div class="uk-margin">
-          <label class="uk-form-label uk-text-bold">Operator Name</label>
-          <div class="uk-form-controls">
-            {% render_field form.name class="uk-input uk-text-small uk-text-light" placeholder="Operator Name" %}
-          </div>
-        </div>
-    </div>
-    <div class="uk-modal-footer uk-text-right">
-      <a href="{% url 'home' %}"><button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button></a>
-      <button class="uk-button uk-button-primary" type="submit">Add</button>
-    </div>
-  </form>
-  </div>
-</div>
+{% include 'frac/operator_form.html' %}
+
 <div class="uk-grid-match uk-grid-large uk-padding" uk-grid>
   {% for operator in operators %}
   <div class="uk-width-1-3@l">
-    <div class="uk-card uk-card-default uk-card-hover uk-card-body uk-card-large">
+    <div class="uk-card uk-card-default uk-card-hover uk-card-body uk-card-medium">
       <div class="uk-card-badge uk-label uk-label-success">Active</div>
-      <h3 class="uk-text-center">{{ operator.name }}</h3>
+      <div class="uk-margin">
+        <h3 class="uk-text-center">{{ operator.name }}</h3>
+      </div>
+      <div>
+        <button class="uk-button uk-button-secondary uk-button-small" href="#update_operator-modal-center" uk-toggle>update</button>
+        <button class="uk-button uk-button-danger uk-button-small" type="submit">Delete</button>
+      </div>
     </div>
   </div>
+  
   {% endfor %}
+  {% include 'frac/operator_update_form.html' %}
+  
 </div>
 
 {% endblock %}

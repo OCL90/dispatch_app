@@ -9,7 +9,7 @@
       </div>
     </div>
     <div class="uk-modal-body">
-      <form action="/create_well/" method="POST" class="uk-form-stacked" id="new_well_form">
+      <form action="{% url 'create_well' %}" method="POST" class="uk-form-stacked" id="new_well_form">
         {% csrf_token %}
         <div class="uk-margin">
           <label class="uk-form-label uk-text-bold" for="form-well-name">Well Name</label>

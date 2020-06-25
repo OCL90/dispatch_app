@@ -1,14 +1,14 @@
-<div id="add_sand-modal-center" uk-modal>
-  <div class="uk-card uk-card-default uk-width-1-2@m uk-align-center">
+<div id="add_sand-modal-center" class="uk-flex-top" uk-modal>
+  <div class="uk-modal-dialog">
     <button class="uk-modal-close-default" type="button" uk-close></button>
-    <div class="uk-card-header">
+    <div class="uk-modal-header">
       <div class="uk-grid-small uk-flex-middle" uk-grid>
         <div class="uk-width-expand">
           <h3 class="uk-card-title uk-margin-remove-bottom uk-text-uppercase uk-text-center">add new sand type</h3>
         </div>
       </div>
     </div>
-    <div class="uk-card-body">
+    <div class="uk-modal-body">
       <form action="/c_sand/{{well.id}}/" method="POST" class="uk-form-stacked">
         {% csrf_token %}
         <div class="uk-margin">
@@ -54,11 +54,11 @@
             <input class="uk-input uk-text-small uk-text-light" type="text" name="total_sand" placeholder="Total Ammount Sand">
           </div>
         </div>
-        <div class="uk-card-footer uk-text-right">
+        <div class="uk-modal-footer uk-text-right">
           <a href="{% url 'home' %}"><button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button></a>
           <button class="uk-button uk-button-primary" type="submit">Add</button>
         </div>
       </form>
-    </div>  
+    </div>
   </div>
 </div>

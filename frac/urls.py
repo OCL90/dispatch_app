@@ -4,7 +4,11 @@ from . import views
 urlpatterns = [
   path('', views.home, name='home'),
   path('sands/', views.sandsPage, name='sand-page'),
+
   path('operators/', views.operatorsPage, name='operators-page'),
+  path('create_operators/', views.createOperator, name='create_operator'),
+  path('operator/<str:pk>/update/', views.updateOperator, name='update_operator'),
+
   path('service_companies/', views.serviceCoPage, name='serviceco-page'),
   path('facilities/', views.facilitiesPage, name='facilities-page'),
   path('facilities/<str:pk>', views.facility, name='facility'),
