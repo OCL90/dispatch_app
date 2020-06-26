@@ -5,6 +5,7 @@ from django.db import models
 
 class Operator(models.Model):
   name = models.CharField(max_length=100, null=True)
+  website = models.CharField(max_length=300, null=True, blank=True)
   date_created = models.DateField(auto_now_add=True, null=True)
 
   def __str__(self):
@@ -12,6 +13,7 @@ class Operator(models.Model):
 
 class ServiceCo(models.Model):
   name = models.CharField(max_length=100, null=True)
+  website = models.CharField(max_length=300, null=True, blank=True)
   date_created = models.DateField(auto_now_add=True, null=True)
 
   def __str__(self):

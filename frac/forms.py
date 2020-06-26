@@ -3,7 +3,7 @@ from django import forms
 from .models import *
 
 class WellForm(forms.Form):
-  name = forms.CharField(required=True)
+  name = forms.CharField()
   operator = forms.CharField(required=True)
   serviceco = forms.CharField(required=True)
   crew = forms.CharField(required=True)

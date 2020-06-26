@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="uk-modal-body">
-      <form action="#" method="POST" class="uk-form-stacked">
+      <form action="{% url 'update_operator' operator.id %}" method="POST" class="uk-form-stacked">
         {% csrf_token %}
         <div class="uk-margin">
           <label class="uk-form-label uk-text-bold">Operator Name</label>

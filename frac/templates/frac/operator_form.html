@@ -18,6 +18,12 @@
             {% render_field form.name class="uk-input uk-text-small uk-text-light" placeholder="Operator Name" %}
           </div>
         </div>
+        <div class="uk-margin">
+          <label class="uk-form-label uk-text-bold">Website (url)</label>
+          <div class="uk-form-controls">
+            {% render_field form.website class="uk-input uk-text-small uk-text-light" placeholder="Website" %}
+          </div>
+        </div>
     </div>
     <div class="uk-modal-footer uk-text-right">
       <a href="{% url 'home' %}"><button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button></a>
