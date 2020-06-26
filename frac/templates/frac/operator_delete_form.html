@@ -6,6 +6,7 @@
       <form action="{% url 'delete_operator' operator.id %}" method="POST" class="uk-form-stacked">
         {% csrf_token %}
         <p class="uk-text-center">Are you sure you want to delete "{{ operator.name }}"?</p>
+        <p class="uk-text-center">This will delete all the associated information with this Operator. Only delete if you must.</p>
       </div>
       <div class="uk-card-footer uk-text-right">
         <a href="{%url 'operator' operator.id %}"><button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button></a>

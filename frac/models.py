@@ -38,9 +38,9 @@ class LoadingFacility(models.Model):
 
 class Well(models.Model):
   name = models.CharField(max_length=100, null=True)
-  operator = models.ForeignKey(Operator, null=True, on_delete=models.SET_NULL)
-  serviceco = models.ForeignKey(ServiceCo, null=True, on_delete=models.SET_NULL)
-  crew = models.ForeignKey(Crew, null=True, on_delete=models.SET_NULL)
+  operator = models.ForeignKey(Operator, null=True, on_delete=models.CASCADE)
+  serviceco = models.ForeignKey(ServiceCo, null=True, on_delete=models.CASCADE)
+  crew = models.ForeignKey(Crew, null=True, on_delete=models.CASCADE)
   location = models.CharField(max_length=100, null=True)
   directions = models.TextField(max_length=2000, null=True)
   active = models.BooleanField(default=True, null=True)
@@ -51,10 +51,10 @@ class Well(models.Model):
 
 class SandType(models.Model):
   sand_name = models.CharField(max_length=30, null=True)
-  well = models.ForeignKey(Well, null=True, on_delete=models.SET_NULL)
+  well = models.ForeignKey(Well, null=True, on_delete=models.CASCADE)
   date_prefill = models.CharField(max_length=30, null=True)
   po = models.CharField(max_length=30, null=True)
-  loading_facility = models.ForeignKey(LoadingFacility, null=True, on_delete=models.SET_NULL)
+  loading_facility = models.ForeignKey(LoadingFacility, null=True, on_delete=models.CASCADE)
   total_sand = models.CharField(max_length=30, null=True)
   date_created = models.DateField(auto_now_add=True, null=True)
 
@@ -91,8 +91,8 @@ class Driver(models.Model):
   name = models.CharField(max_length=100, null=True)
   employer = models.CharField(max_length=30, null=True)
   status = models.CharField(max_length=100, null=True, choices=STATUS)
-  truck = models.ForeignKey(Truck, null=True, blank=True, on_delete=models.SET_NULL)
-  trailer = models.ForeignKey(Trailer, null=True, blank=True, on_delete=models.SET_NULL)
+  truck = models.ForeignKey(Truck, null=True, blank=True, on_delete=models.CASCADE)
+  trailer = models.ForeignKey(Trailer, null=True, blank=True, on_delete=models.CASCADE)
   available = models.BooleanField(default=True, null=True)
   date_created = models.DateField(auto_now_add=True, null=True)
 
@@ -108,9 +108,9 @@ class Order(models.Model):
     ('Loaded', 'Loaded'),
     ('Complete', 'Complete'),
   )
-  well = models.ForeignKey(Well, null=True, on_delete=models.SET_NULL)
-  sand = models.ForeignKey(SandType, null=True, on_delete=models.SET_NULL)
-  driver = models.ForeignKey(Driver, null=True, on_delete=models.SET_NULL)
+  well = models.ForeignKey(Well, null=True, on_delete=models.CASCADE)
+  sand = models.ForeignKey(SandType, null=True, on_delete=models.CASCADE)
+  driver = models.ForeignKey(Driver, null=True, on_delete=models.CASCADE)
   appt_time = models.CharField(max_length=50, null=True)
   request_weight = models.CharField(max_length=50, null=True)
   actual_weight = models.CharField(max_length=50, blank=True, null=True)
