@@ -8,6 +8,8 @@ urlpatterns = [
   path('operators/', views.operatorsPage, name='operators-page'),
   path('create_operators/', views.createOperator, name='create_operator'),
   path('operator/<str:pk>', views.operator, name='operator'),
+  path('operator/<str:pk>/update/', views.updateOperator, name='update_operator'),
+  path('operator/<str:pk>/delete/', views.deleteOperator, name='delete_operator'),
 
   path('service_companies/', views.serviceCoPage, name='serviceco-page'),
   path('facilities/', views.facilitiesPage, name='facilities-page'),

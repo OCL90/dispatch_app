@@ -117,8 +117,10 @@ def sandsPage(request):
 
 def operator(request, pk):
   operator = Operator.objects.get(id=pk)
+  form = OperatorForm()
+  form = OperatorForm(instance=operator)
 
-  context = {'operator': operator}
+  context = {'operator': operator, 'form': form}
   return render(request, 'frac/operator_info.html', context)
 
 def operatorsPage(request):
@@ -141,9 +143,29 @@ def createOperator(request):
   context = {'form': form}
   return render(request, 'frac/operator_form.html', context)
 
-def updateOperator(request):
+def updateOperator(request, pk):
+  operator = Operator.objects.get(id=pk)
+  if request.method == 'POST':
+    print('Printing POST: ', request.POST)
+    form = OperatorForm(request.POST, instance=operator)
+    if form.is_valid():
+      form.save()
+      return redirect('operator', pk=operator.id)
+    else:
+      print("error")
+   
   context = {}
   return render(request, 'frac/operator_update_form.html', context)
+
+def deleteOperator(request, pk):
+  operator = Operator.objects.get(id=pk)
+
+  if request.method == 'POST':
+    operator.delete()
+    return redirect('/operators')
+
+  context = {}
+  return render(request, 'frac/operator_delete_form.html', context)
 
 
 def serviceCoPage(request):
