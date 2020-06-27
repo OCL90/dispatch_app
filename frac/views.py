@@ -212,7 +212,17 @@ def updateFacility(request, pk):
       print("error")
    
   context = {}
-  return render(request, 'frac/operator_update_form.html', context)
+  return render(request, 'frac/facility_update_form.html', context)
+
+def deleteFacility(request, pk):
+  facility = LoadingFacility.objects.get(id=pk)
+
+  if request.method == 'POST':
+    facility.delete()
+    return redirect('/facilities')
+
+  context = {}
+  return render(request, 'frac/facility_delete_form.html', context)
 
 def driversPage(request):
   drivers = Driver.objects.all()

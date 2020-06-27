@@ -5,8 +5,8 @@
       <div id="uk-card-secondary" class="uk-card uk-card-body">
       <form action="{% url 'delete_well' well.id %}" method="POST" class="uk-form-stacked">
         {% csrf_token %}
-        <p class="uk-text-center">Are you sure you want to delete "{{ well.name }}" well?</p>
-        <p class="uk-text-center">This will delete all the associated information with this Well. Only delete if you must.</p>
+        <p class="uk-text-center">Are you sure you want to delete <span class="uk-text-bold" style="color: black;">{{ well.name }}</span> well?</p>
+        <p class="uk-text-center">This will delete all the associated information with <span class="uk-text-bold" style="color: black;">{{ well.name }}</span>. Only delete if you must.</p>
       </div>
       <div class="uk-card-footer uk-text-right">
         <a href="{%url 'well' well.id %}"><button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button></a>
