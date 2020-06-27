@@ -174,7 +174,9 @@ def serviceCoPage(request):
 
 def facilitiesPage(request):
   facilities = LoadingFacility.objects.all()
-  context = {'facilities': facilities}
+  form = FacilityForm()
+
+  context = {'form': form, 'facilities': facilities}
   return render(request, 'frac/facilities_page.html', context)
 
 def facility(request, pk):
@@ -182,6 +184,19 @@ def facility(request, pk):
 
   context = {'facility': facility}
   return render(request, 'frac/facility_info.html', context)
+
+def createFacility(request):
+  if request.method == 'POST':
+    print('Printing POST: ', request.POST)
+    form = FacilityForm(request.POST)
+    if form.is_valid():
+      form.save()
+      return redirect('/facilities')
+  else:
+      print("error")
+
+  context = {'form': form}
+  return render(request, 'frac/facility_form.html', context)
 
 def driversPage(request):
   drivers = Driver.objects.all()

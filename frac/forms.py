@@ -3,7 +3,7 @@ from django import forms
 from .models import *
 
 class WellForm(forms.Form):
-  name = forms.CharField()
+  name = forms.CharField(required=True)
   operator = forms.CharField(required=True)
   serviceco = forms.CharField(required=True)
   crew = forms.CharField(required=True)
@@ -18,6 +18,11 @@ class SandForm(forms.Form):
   po = forms.CharField(required=True)
   total_sand = forms.CharField(required=True)
 
+
+class WellsForm(ModelForm):
+  class Meta:
+    model = Well
+    fields = '__all__'
 
 class OperatorForm(ModelForm):
   class Meta:
@@ -34,7 +39,7 @@ class DriverForm(ModelForm):
     self.fields['truck'].empty_label = "Select"
     self.fields['trailer'].empty_label = "Select"
 
-class WellsForm(ModelForm):
+class FacilityForm(ModelForm):
   class Meta:
-    model = Well
+    model = LoadingFacility
     fields = '__all__'

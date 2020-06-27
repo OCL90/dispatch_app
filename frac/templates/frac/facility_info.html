@@ -1,14 +1,21 @@
-
 {% extends 'frac/main.html' %}
-
 {% block content %}
 
-<div class="uk-text-center uk-align-center uk-margin uk-padding uk-width-xxlarge">
-  <h1>{{ facility.name }} Loading Facility</h1>
-  <p class="uk-text-italic uk-margin-remove"><span class="uk-text-bold">Location:</span> {{ facility.location }}</p>
-  <p class="uk-text-italic uk-margin-remove"><span class="uk-text-bold">Directions:</span> <br> {{ facility.directions }}</p>
-</div>
-
-
+<div class="uk-text-center uk-padding" uk-grid>
+  <div class="uk-width-1-3@m"></div>
+  <div class="uk-width-1-3@m uk-margin">
+    <div class="uk-card uk-card-default uk-card-body">
+      <h1 class="uk-card-title">{{ facility.name }}</h1>
+      <p></p>
+      <div class="uk-text-right uk-margin">
+        <button class="uk-button uk-button-small uk-button-secondary" href="#update_facility-modal-center" uk-toggle>Update</button>
+        <button class="uk-button uk-button-small uk-button-danger" href="#delete_facility-modal-center" uk-toggle>Delete</button>
+      </div>
+    </div>
+  </div>
+  <div class="uk-width-1-3@m"></div>
+</div> 
+{% include 'frac/facility_update_form.html' %}
+{% include 'frac/facility_delete_form.html' %}
 
 {% endblock %}

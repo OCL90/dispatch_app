@@ -1,0 +1,40 @@
+{% load widget_tweaks %}
+<div id="facility-modal-center" class="uk-flex-top" uk-modal>
+  <div class="uk-modal-dialog">
+    <button class="uk-modal-close-default" type="button" uk-close></button>
+    <div class="uk-modal-header">
+      <div class="uk-grid-small uk-flex-middle" uk-grid>
+        <div class="uk-width-expand">
+          <h3 class="uk-card-title uk-margin-remove-bottom uk-text-uppercase uk-text-center">add new loading facility</h3>
+        </div>
+      </div>
+    </div>
+    <div class="uk-modal-body">
+      <form action="{% url 'create_facility' %}" method="POST" class="uk-form-stacked">
+        {% csrf_token %}
+      <div class="uk-margin">
+        <label class="uk-form-label uk-text-bold">Facility Name</label>
+        <div class="uk-form-controls">
+          {% render_field form.name class="uk-input uk-text-small uk-text-light" placeholder="Facility Name" %}
+        </div>
+      </div>
+      <div class="uk-margin">
+        <label class="uk-form-label uk-text-bold">Location</label>
+        <div class="uk-form-controls">
+          {% render_field form.location class="uk-input uk-text-small uk-text-light" placeholder="Location" %}
+        </div>
+      </div>
+      <div class="uk-margin">
+        <label class="uk-form-label uk-text-bold">Directions</label>
+        <div class="uk-form-controls">
+          {% render_field form.directions rows="2" class="uk-textarea uk-text-small uk-text-light" placeholder="Directions" %}
+        </div>
+      </div>
+    </div>
+    <div class="uk-modal-footer uk-text-right">
+      <button class="uk-button uk-button-default uk-modal-close">Cancel</button>
+      <button class="uk-button uk-button-primary" type="submit">Add</button>
+    </div>
+    </form>
+  </div>
+</div>

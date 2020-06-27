@@ -6,14 +6,17 @@ urlpatterns = [
   path('sands/', views.sandsPage, name='sand-page'),
 
   path('operators/', views.operatorsPage, name='operators-page'),
-  path('create_operators/', views.createOperator, name='create_operator'),
+  path('create_operator/', views.createOperator, name='create_operator'),
   path('operator/<str:pk>', views.operator, name='operator'),
   path('operator/<str:pk>/update/', views.updateOperator, name='update_operator'),
   path('operator/<str:pk>/delete/', views.deleteOperator, name='delete_operator'),
 
   path('service_companies/', views.serviceCoPage, name='serviceco-page'),
+
   path('facilities/', views.facilitiesPage, name='facilities-page'),
+  path('create_facility/', views.createFacility, name='create_facility'),
   path('facilities/<str:pk>', views.facility, name='facility'),
+  
 
   path('drivers/', views.driversPage, name='drivers-page'),
   path('create_driver/', views.createDriver, name='create_driver'),
