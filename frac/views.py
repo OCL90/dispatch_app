@@ -181,8 +181,10 @@ def facilitiesPage(request):
 
 def facility(request, pk):
   facility = LoadingFacility.objects.get(id=pk)
+  form = FacilityForm()
+  form = FacilityForm(instance=facility)
 
-  context = {'facility': facility}
+  context = {'form': form, 'facility': facility}
   return render(request, 'frac/facility_info.html', context)
 
 def createFacility(request):
@@ -197,6 +199,20 @@ def createFacility(request):
 
   context = {'form': form}
   return render(request, 'frac/facility_form.html', context)
+
+def updateFacility(request, pk):
+  facility = LoadingFacility.objects.get(id=pk)
+  if request.method == 'POST':
+    print('Printing POST: ', request.POST)
+    form = FacilityForm(request.POST, instance=facility)
+    if form.is_valid():
+      form.save()
+      return redirect('facility', pk=facility.id)
+    else:
+      print("error")
+   
+  context = {}
+  return render(request, 'frac/operator_update_form.html', context)
 
 def driversPage(request):
   drivers = Driver.objects.all()

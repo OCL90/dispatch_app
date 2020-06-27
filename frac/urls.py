@@ -15,7 +15,8 @@ urlpatterns = [
 
   path('facilities/', views.facilitiesPage, name='facilities-page'),
   path('create_facility/', views.createFacility, name='create_facility'),
-  path('facilities/<str:pk>', views.facility, name='facility'),
+  path('facility/<str:pk>', views.facility, name='facility'),
+  path('facility/<str:pk>/update/', views.updateFacility, name='update_facility'),
   
 
   path('drivers/', views.driversPage, name='drivers-page'),
