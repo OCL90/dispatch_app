@@ -180,6 +180,19 @@ def serviceco(request, pk):
   context = {'serviceco': serviceco}
   return render(request, 'frac/serviceco_info.html', context)
 
+def createServiceCo(request):
+  if request.method == 'POST':
+    print('Printing POST: ', request.POST)
+    form = ServiceCoForm(request.POST)
+    if form.is_valid():
+      form.save()
+      return redirect('/service_companies')
+  else:
+      print("error")
+
+  context = {'form': form}
+  return render(request, 'frac/serviceco_form.html', context)
+
 def facilitiesPage(request):
   facilities = LoadingFacility.objects.all()
   form = FacilityForm()

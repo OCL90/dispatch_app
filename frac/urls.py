@@ -12,6 +12,7 @@ urlpatterns = [
   path('operator/<str:pk>/delete/', views.deleteOperator, name='delete_operator'),
 
   path('service_companies/', views.serviceCoPage, name='serviceco-page'),
+  path('create_serviceco/', views.createServiceCo, name='create_serviceco'),
   path('serviceco/<str:pk>', views.serviceco, name='serviceco'),
 
   path('facilities/', views.facilitiesPage, name='facilities-page'),
