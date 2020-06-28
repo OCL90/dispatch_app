@@ -1,6 +1,9 @@
 {% extends 'frac/main.html' %}
 {% block content %}
-
+<ul class="uk-breadcrumb">
+  <li><a href="{% url 'home' %}">Wells</a></li>
+  <li><span class="uk-text-bold">{{ well.name }}</span></li>
+</ul>
 <div>
   <h1 class="uk-text-center uk-text-uppercase uk-margin-remove">{{ well.operator.name }} <span uk-icon="icon:chevron-double-right ; ratio:3"></span> {{ well.name }}</h1>
 </div>

@@ -1,16 +1,10 @@
 {% extends 'frac/main.html' %}
-
 {% block content %}
-
-<div class="uk-text-center uk-padding">
-  <h1 class="uk-text-uppercase">Wells</h1>
+<div class="uk-text-center uk-margin">
+  <h2 class="uk-text-uppercase">Wells</h2>
 </div>
-
-
-<div class="uk-child-width-expand@s uk-text-center" uk-grid>
-  <div>
-   <button class="uk-button uk-button-primary uk-border-rounded" href="#well-modal-center" uk-toggle uk-icon="plus-circle">add well </button>
-  </div>
+<div class="uk-padding">
+  <button class="uk-button uk-button-primary uk-border-rounded" href="#well-modal-center" uk-toggle uk-icon="plus-circle">add well </button>
 </div>
 {% include 'frac/well_form.html' %}
 
