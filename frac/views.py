@@ -167,10 +167,18 @@ def deleteOperator(request, pk):
   context = {}
   return render(request, 'frac/operator_delete_form.html', context)
 
-
 def serviceCoPage(request):
-  context = {}
+  servicecos = ServiceCo.objects.all()
+  form = ServiceCoForm()
+
+  context = {'form': form, 'servicecos': servicecos}
   return render(request, 'frac/serviceco_page.html', context)
+
+def serviceco(request, pk):
+  serviceco = ServiceCo.objects.get(id=pk)
+
+  context = {'serviceco': serviceco}
+  return render(request, 'frac/serviceco_info.html', context)
 
 def facilitiesPage(request):
   facilities = LoadingFacility.objects.all()

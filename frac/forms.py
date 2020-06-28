@@ -18,7 +18,6 @@ class SandForm(forms.Form):
   po = forms.CharField(required=True)
   total_sand = forms.CharField(required=True)
 
-
 class WellsForm(ModelForm):
   class Meta:
     model = Well
@@ -43,3 +42,8 @@ class FacilityForm(ModelForm):
   class Meta:
     model = LoadingFacility
     fields = '__all__'
+
+class ServiceCoForm(ModelForm):
+  class Meta:
+    model = ServiceCo
+    fields = "__all__"
