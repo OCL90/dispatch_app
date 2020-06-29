@@ -15,6 +15,7 @@ urlpatterns = [
   path('create_serviceco/', views.createServiceCo, name='create_serviceco'),
   path('serviceco/<str:pk>', views.serviceco, name='serviceco'),
   path('serviceco/<str:pk>/update/', views.updateServiceCo, name='update_serviceco'),
+  path('serviceco/<str:pk>/delete/', views.deleteServiceCo, name='delete_serviceco'),
 
   path('facilities/', views.facilitiesPage, name='facilities-page'),
   path('create_facility/', views.createFacility, name='create_facility'),
@@ -22,7 +23,6 @@ urlpatterns = [
   path('facility/<str:pk>/update/', views.updateFacility, name='update_facility'),
   path('facility/<str:pk>/delete/', views.deleteFacility, name='delete_facility'),
   
-
   path('drivers/', views.driversPage, name='drivers-page'),
   path('create_driver/', views.createDriver, name='create_driver'),
 

@@ -1,0 +1,18 @@
+<div id="delete_serviceco-modal-center" class="uk-flex-top" uk-modal>
+  <div class="uk-modal-dialog">
+    <button class="uk-modal-close-default" type="button" uk-close></button>
+    <div>
+      <div id="uk-card-secondary" class="uk-card uk-card-body">
+      <form action="{% url 'delete_serviceco' serviceco.id %}" method="POST" class="uk-form-stacked">
+        {% csrf_token %}
+        <p class="uk-text-center">Are you sure you want to delete <span class="uk-text-bold" style="color: black;">{{ serviceco.name }}</span>?</p>
+        <p class="uk-text-center">This will delete all the associated information with <span class="uk-text-bold" style="color: black;">{{ serviceco.name }}</span>. Only delete if you must.</p>
+      </div>
+      <div class="uk-card-footer uk-text-right">
+        <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+        <button class="uk-button uk-button-danger" type="submit">Delete</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>

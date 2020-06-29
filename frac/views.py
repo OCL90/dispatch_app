@@ -209,6 +209,16 @@ def updateServiceCo(request, pk):
   context = {}
   return render(request, 'frac/serviceco_update_form.html', context)
 
+def deleteServiceCo(request, pk):
+  serviceco = ServiceCo.objects.get(id=pk)
+
+  if request.method == 'POST':
+    serviceco.delete()
+    return redirect('/service_companies')
+
+  context = {}
+  return render(request, 'frac/serviceco_delete_form.html', context)
+
 def facilitiesPage(request):
   facilities = LoadingFacility.objects.all()
   form = FacilityForm()
