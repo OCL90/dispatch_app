@@ -14,6 +14,7 @@ urlpatterns = [
   path('service_companies/', views.serviceCoPage, name='serviceco-page'),
   path('create_serviceco/', views.createServiceCo, name='create_serviceco'),
   path('serviceco/<str:pk>', views.serviceco, name='serviceco'),
+  path('serviceco/<str:pk>/update/', views.updateServiceCo, name='update_serviceco'),
 
   path('facilities/', views.facilitiesPage, name='facilities-page'),
   path('create_facility/', views.createFacility, name='create_facility'),

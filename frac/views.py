@@ -176,8 +176,10 @@ def serviceCoPage(request):
 
 def serviceco(request, pk):
   serviceco = ServiceCo.objects.get(id=pk)
+  form = ServiceCoForm()
+  form = ServiceCoForm(instance=serviceco)
 
-  context = {'serviceco': serviceco}
+  context = {'form': form, 'serviceco': serviceco}
   return render(request, 'frac/serviceco_info.html', context)
 
 def createServiceCo(request):
@@ -192,6 +194,20 @@ def createServiceCo(request):
 
   context = {'form': form}
   return render(request, 'frac/serviceco_form.html', context)
+
+def updateServiceCo(request, pk):
+  serviceco = ServiceCo.objects.get(id=pk)
+  if request.method == 'POST':
+    print('Printing POST: ', request.POST)
+    form = ServiceCoForm(request.POST, instance=serviceco)
+    if form.is_valid():
+      form.save()
+      return redirect('serviceco', pk=serviceco.id)
+    else:
+      print("error")
+   
+  context = {}
+  return render(request, 'frac/serviceco_update_form.html', context)
 
 def facilitiesPage(request):
   facilities = LoadingFacility.objects.all()

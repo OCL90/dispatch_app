@@ -38,13 +38,11 @@
     
   </ul>
   <div class="uk-switcher">
-    <div class="uk-padding">
-      <div class="uk-text-center">
-        <h1>Ready Trucks</h1>
-      </div>
+    <div class="uk-text-center">
+      <h1>Ready Trucks</h1>
     </div>
     {% for sand in sands %}
-    <div id="prefill_details" class="uk-padding ">
+    <div id="prefill_details">
       <div class="uk-text-center" uk-grid>
         <p class="uk-width-1-4"></p>
         <p class="uk-width-1-4@m"><span class="uk-text-bold"> Loading Facility: </span><a href="{% url 'facility' sand.loading_facility.id %}">{{ sand.loading_facility.name }}</a></p>
