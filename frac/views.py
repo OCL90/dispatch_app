@@ -274,12 +274,14 @@ def deleteFacility(request, pk):
 def driversPage(request):
   drivers = Driver.objects.all()
 
+  form = DriverForm()
+
   total_drivers = drivers.count()
   onduty = drivers.filter(status = 'On Duty').count()
   offduty = drivers.filter(status = 'Off Duty').count()
   down = drivers.filter(status = 'Down').count()
 
-  context = {'drivers': drivers, 'onduty': onduty, 'offduty': offduty, 'down': down, 'total_drivers': total_drivers}
+  context = {'form': form, 'drivers': drivers, 'onduty': onduty, 'offduty': offduty, 'down': down, 'total_drivers': total_drivers}
   return render(request, 'frac/drivers_page.html', context)
 
 def createDriver(request):
